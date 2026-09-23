@@ -1,28 +1,402 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Blog Escolar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bitácora Antimosquitos</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #082743;
+            color: white;
+        }
+
+        /* MENU */
+
+        header {
+            background: #061d33;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #36516b;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 25px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #ffc107;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffc107;
+        }
+
+        /* PORTADA */
+
+        .inicio {
+            min-height: 88vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+        .inicio h1 {
+            font-size: 58px;
+            max-width: 900px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .inicio h1 span {
+            color: #79d9a3;
+        }
+
+        .subtitulo {
+            font-family: Georgia, serif;
+            font-size: 21px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-bottom: 45px;
+        }
+
+        /* TARJETA */
+
+        .datos {
+            width: 90%;
+            max-width: 900px;
+
+            background: rgba(255,255,255,0.12);
+
+            border: 1px solid #71869a;
+            border-radius: 15px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .dato {
+            padding: 25px;
+            border-right: 1px solid #536b80;
+        }
+
+        .dato:last-child {
+            border-right: none;
+        }
+
+        .dato h3 {
+            color: #ffc107;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .dato p {
+            font-family: Georgia, serif;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        /* SECCIONES */
+
+        section.contenido {
+            max-width: 1000px;
+            margin: auto;
+            padding: 100px 30px;
+        }
+
+        section.contenido h2 {
+            font-size: 40px;
+            color: #79d9a3;
+            margin-bottom: 25px;
+        }
+
+        section.contenido p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #e4edf5;
+        }
+
+        .seccion-clara {
+            background: #0c3152;
+        }
+
+        footer {
+            background: #051a2d;
+            text-align: center;
+            padding: 35px;
+            color: #b8c5d1;
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 850px) {
+
+            nav {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 20px;
+                gap: 15px;
+            }
+
+            .inicio h1 {
+                font-size: 38px;
+            }
+
+            .datos {
+                grid-template-columns: 1fr;
+            }
+
+            .dato {
+                border-right: none;
+                border-bottom: 1px solid #536b80;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-  <h1>Mi Blog Escolar</h1>
+<header>
 
-  <h2>Proyecto de investigación</h2>
+    <nav>
 
-  <p>
-    Bienvenidos a mi blog. Aquí presentaré mi proyecto,
-    investigación, materiales, evidencias, producto,
-    opinión, conclusiones y fuentes.
-  </p>
+        <div class="logo">
+            🦟 <span>Bitácora</span> Antimosquitos
+        </div>
 
-  <h3>Datos del estudiante</h3>
+        <ul>
+            <li><a href="#presentacion">Presentación</a></li>
+            <li><a href="#investigacion">Investigación</a></li>
+            <li><a href="#materiales">Materiales</a></li>
+            <li><a href="#evidencias">Evidencias</a></li>
+            <li><a href="#producto">Producto</a></li>
+            <li><a href="#opinion">Opinión</a></li>
+            <li><a href="#conclusiones">Conclusiones</a></li>
+            <li><a href="#fuentes">Fuentes</a></li>
+        </ul>
 
-  <p><strong>Estudiante:</strong> Mathias David Mero Viteri</p>
-  <p><strong>Curso:</strong> Primero de Bachillerato</p>
-  <p><strong>Paralelo:</strong> Alfa</p>
+    </nav>
+
+</header>
+
+
+<main>
+
+
+<section class="inicio" id="presentacion">
+
+    <h1>
+        Uso adecuado del
+        <span>repelente para mosquitos</span>
+    </h1>
+
+    <p class="subtitulo">
+        Proyecto de investigación realizado por estudiantes de
+        Primero de Bachillerato General Unificado.
+    </p>
+
+
+    <div class="datos">
+
+        <div class="dato">
+
+            <h3>ESTUDIANTE</h3>
+
+            <p>
+                Mathias David Mero Viteri
+            </p>
+
+        </div>
+
+
+        <div class="dato">
+
+            <h3>CURSO Y PARALELO</h3>
+
+            <p>
+                Primero de Bachillerato<br>
+                Paralelo Alfa
+            </p>
+
+        </div>
+
+
+        <div class="dato">
+
+            <h3>DOCENTE RESPONSABLE</h3>
+
+            <p>
+                Nombre del docente
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="contenido seccion-clara" id="investigacion">
+
+    <h2>Investigación</h2>
+
+    <p>
+        En esta sección se presentará la información investigada
+        acerca de los mosquitos, las enfermedades que pueden transmitir
+        y la importancia de utilizar correctamente los repelentes.
+    </p>
+
+</section>
+
+
+
+<section class="contenido" id="materiales">
+
+    <h2>Materiales</h2>
+
+    <p>
+        Aquí se colocarán los materiales utilizados durante el desarrollo
+        del proyecto y la elaboración del producto.
+    </p>
+
+</section>
+
+
+
+<section class="contenido seccion-clara" id="evidencias">
+
+    <h2>Evidencias</h2>
+
+    <p>
+        En esta sección se mostrarán fotografías y evidencias del proceso
+        realizado durante el proyecto.
+    </p>
+
+</section>
+
+
+
+<section class="contenido" id="producto">
+
+    <h2>Producto</h2>
+
+    <p>
+        Aquí se presentará el producto final elaborado como resultado
+        del proyecto de investigación.
+    </p>
+
+</section>
+
+
+
+<section class="contenido seccion-clara" id="opinion">
+
+    <h2>Opinión</h2>
+
+    <p>
+        En esta sección se incluirá una opinión personal acerca de la
+        importancia del proyecto y de lo aprendido durante su realización.
+    </p>
+
+</section>
+
+
+
+<section class="contenido" id="conclusiones">
+
+    <h2>Conclusiones</h2>
+
+    <p>
+        Aquí se escribirán las principales conclusiones obtenidas después
+        de realizar la investigación.
+    </p>
+
+</section>
+
+
+
+<section class="contenido seccion-clara" id="fuentes">
+
+    <h2>Fuentes</h2>
+
+    <p>
+        En esta sección se colocarán las páginas web, libros, artículos
+        y demás fuentes utilizadas para realizar la investigación.
+    </p>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 - Proyecto escolar | Mathias David Mero Viteri
+    </p>
+
+</footer>
+
 
 </body>
 </html>
