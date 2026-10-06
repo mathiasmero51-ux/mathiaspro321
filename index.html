@@ -147,16 +147,26 @@
 
     .evidencias {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
     }
 
     .evidencia {
       background: #eef9f5;
-      padding: 35px 15px;
+      padding: 15px;
       text-align: center;
+      border-radius: 12px;
+      border: 2px solid #73c9a9;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .evidencia img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
       border-radius: 10px;
-      border: 2px dashed #73c9a9;
+      margin-bottom: 10px;
     }
 
     footer {
@@ -175,6 +185,10 @@
       section {
         margin: 15px;
         padding: 20px;
+      }
+
+      .evidencia img {
+        height: 200px;
       }
     }
   </style>
@@ -360,28 +374,27 @@
   <h2>📸 Evidencias</h2>
 
   <p>
-    En esta sección se colocarán fotografías que demuestren el desarrollo
-    del proyecto.
+    A continuación se muestran fotografías del desarrollo del proyecto.
   </p>
 
   <div class="evidencias">
 
     <div class="evidencia">
-      📷<br>
-      <strong>Evidencia 1</strong><br>
-      Recolección de materiales
+      <img src="materiales.jpg" alt="Materiales del proyecto">
+      <strong>Evidencia 1</strong>
+      <p>Recolección de materiales</p>
     </div>
 
     <div class="evidencia">
-      📷<br>
-      <strong>Evidencia 2</strong><br>
-      Desarrollo del proyecto
+      <img src="proceso.jpg" alt="Proceso de elaboración">
+      <strong>Evidencia 2</strong>
+      <p>Desarrollo del proyecto</p>
     </div>
 
     <div class="evidencia">
-      📷<br>
-      <strong>Evidencia 3</strong><br>
-      Producto terminado
+      <img src="producto.jpg" alt="Producto terminado">
+      <strong>Evidencia 3</strong>
+      <p>Producto terminado</p>
     </div>
 
   </div>
@@ -466,7 +479,9 @@
 
   <h2>📚 Fuentes de investigación</h2>
 
-  <p>Para realizar la investigación se pueden consultar fuentes confiables como:</p>
+  <p>
+    Para realizar la investigación se pueden consultar fuentes confiables como:
+  </p>
 
   <ul>
     <li>Organización Mundial de la Salud (OMS).</li>
