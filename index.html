@@ -1,402 +1,487 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Bitácora Antimosquitos</title>
+  <title>Bitácora Antimosquitos | Mathias Mero</title>
 
-    <style>
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f7f5;
+      color: #263238;
+      line-height: 1.6;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    header {
+      background: linear-gradient(135deg, #176b55, #249b74);
+      color: white;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #082743;
-            color: white;
-        }
+    header h2 {
+      margin: 0 0 10px;
+      text-align: center;
+    }
 
-        /* MENU */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-        header {
-            background: #061d33;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #36516b;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
 
-        nav {
-            max-width: 1200px;
-            margin: auto;
-            min-height: 75px;
+    nav a:hover {
+      background: rgba(255,255,255,0.18);
+    }
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    .hero {
+      text-align: center;
+      padding: 70px 20px;
+      background: linear-gradient(135deg, #dff5ec, #ffffff);
+    }
 
-            padding: 0 25px;
-        }
+    .hero h1 {
+      color: #176b55;
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
 
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: white;
-        }
+    .hero p {
+      font-size: 18px;
+      max-width: 750px;
+      margin: auto;
+    }
 
-        .logo span {
-            color: #ffc107;
-        }
+    .datos {
+      max-width: 850px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      padding: 0 20px;
+    }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 28px;
-        }
+    .dato {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      border-top: 4px solid #249b74;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-            transition: 0.3s;
-        }
+    .dato h3 {
+      color: #176b55;
+      margin-top: 0;
+    }
 
-        nav a:hover {
-            color: #ffc107;
-        }
+    section {
+      max-width: 950px;
+      margin: 30px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
 
-        /* PORTADA */
+    section h2 {
+      color: #176b55;
+      border-bottom: 3px solid #73c9a9;
+      padding-bottom: 8px;
+    }
 
-        .inicio {
-            min-height: 88vh;
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+    .tarjeta {
+      background: #eef9f5;
+      border-radius: 12px;
+      padding: 18px;
+      border-left: 5px solid #249b74;
+    }
 
-            text-align: center;
+    .tarjeta h3 {
+      color: #176b55;
+      margin-top: 0;
+    }
 
-            padding: 70px 20px;
-        }
+    ul {
+      padding-left: 25px;
+    }
 
-        .inicio h1 {
-            font-size: 58px;
-            max-width: 900px;
-            line-height: 1.1;
-            margin-bottom: 30px;
-        }
+    li {
+      margin-bottom: 8px;
+    }
 
-        .inicio h1 span {
-            color: #79d9a3;
-        }
+    .aviso {
+      background: #fff8dc;
+      padding: 15px;
+      border-left: 5px solid #e6b800;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
 
-        .subtitulo {
-            font-family: Georgia, serif;
-            font-size: 21px;
-            line-height: 1.6;
-            max-width: 800px;
-            margin-bottom: 45px;
-        }
+    .evidencias {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
 
-        /* TARJETA */
+    .evidencia {
+      background: #eef9f5;
+      padding: 35px 15px;
+      text-align: center;
+      border-radius: 10px;
+      border: 2px dashed #73c9a9;
+    }
 
-        .datos {
-            width: 90%;
-            max-width: 900px;
+    footer {
+      background: #176b55;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
 
-            background: rgba(255,255,255,0.12);
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 28px;
+      }
 
-            border: 1px solid #71869a;
-            border-radius: 15px;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-
-            text-align: left;
-            overflow: hidden;
-        }
-
-        .dato {
-            padding: 25px;
-            border-right: 1px solid #536b80;
-        }
-
-        .dato:last-child {
-            border-right: none;
-        }
-
-        .dato h3 {
-            color: #ffc107;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .dato p {
-            font-family: Georgia, serif;
-            font-size: 18px;
-            line-height: 1.5;
-        }
-
-        /* SECCIONES */
-
-        section.contenido {
-            max-width: 1000px;
-            margin: auto;
-            padding: 100px 30px;
-        }
-
-        section.contenido h2 {
-            font-size: 40px;
-            color: #79d9a3;
-            margin-bottom: 25px;
-        }
-
-        section.contenido p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #e4edf5;
-        }
-
-        .seccion-clara {
-            background: #0c3152;
-        }
-
-        footer {
-            background: #051a2d;
-            text-align: center;
-            padding: 35px;
-            color: #b8c5d1;
-        }
-
-        /* CELULAR */
-
-        @media (max-width: 850px) {
-
-            nav {
-                flex-direction: column;
-                padding: 20px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                margin-top: 20px;
-                gap: 15px;
-            }
-
-            .inicio h1 {
-                font-size: 38px;
-            }
-
-            .datos {
-                grid-template-columns: 1fr;
-            }
-
-            .dato {
-                border-right: none;
-                border-bottom: 1px solid #536b80;
-            }
-
-        }
-
-    </style>
+      section {
+        margin: 15px;
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
 <header>
+  <h2>🦟 Bitácora Antimosquitos</h2>
 
-    <nav>
-
-        <div class="logo">
-            🦟 <span>Bitácora</span> Antimosquitos
-        </div>
-
-        <ul>
-            <li><a href="#presentacion">Presentación</a></li>
-            <li><a href="#investigacion">Investigación</a></li>
-            <li><a href="#materiales">Materiales</a></li>
-            <li><a href="#evidencias">Evidencias</a></li>
-            <li><a href="#producto">Producto</a></li>
-            <li><a href="#opinion">Opinión</a></li>
-            <li><a href="#conclusiones">Conclusiones</a></li>
-            <li><a href="#fuentes">Fuentes</a></li>
-        </ul>
-
-    </nav>
-
+  <nav>
+    <a href="#presentacion">Presentación</a>
+    <a href="#opciones">Opciones</a>
+    <a href="#investigacion">Investigación</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#evidencias">Evidencias</a>
+    <a href="#producto">Producto</a>
+    <a href="#opinion">Opinión</a>
+    <a href="#conclusiones">Conclusiones</a>
+    <a href="#fuentes">Fuentes</a>
+  </nav>
 </header>
 
 
-<main>
+<div class="hero" id="presentacion">
+  <h1>Uso adecuado del repelente para mosquitos</h1>
+
+  <p>
+    Proyecto interdisciplinario del Segundo Trimestre enfocado en la
+    investigación sobre los mosquitos, la prevención de sus picaduras
+    y el desarrollo de una propuesta de biorepelente.
+  </p>
+</div>
 
 
-<section class="inicio" id="presentacion">
+<div class="datos">
 
-    <h1>
-        Uso adecuado del
-        <span>repelente para mosquitos</span>
-    </h1>
+  <div class="dato">
+    <h3>👨‍🎓 Estudiante</h3>
+    <p>Mathias David Mero Viteri</p>
+  </div>
 
-    <p class="subtitulo">
-        Proyecto de investigación realizado por estudiantes de
-        Primero de Bachillerato General Unificado.
-    </p>
+  <div class="dato">
+    <h3>📚 Curso</h3>
+    <p>Primero de Bachillerato<br>Paralelo Alfa</p>
+  </div>
 
+  <div class="dato">
+    <h3>📅 Proyecto</h3>
+    <p>Segundo Trimestre<br>2026</p>
+  </div>
 
-    <div class="datos">
-
-        <div class="dato">
-
-            <h3>ESTUDIANTE</h3>
-
-            <p>
-                Mathias David Mero Viteri
-            </p>
-
-        </div>
+</div>
 
 
-        <div class="dato">
+<section id="opciones">
 
-            <h3>CURSO Y PARALELO</h3>
+  <h2>🎤 Opciones de presentación</h2>
 
-            <p>
-                Primero de Bachillerato<br>
-                Paralelo Alfa
-            </p>
+  <p>
+    Para presentar este proyecto se utilizarán diferentes recursos que
+    permitan explicar de manera sencilla la investigación realizada y
+    mostrar el proceso de elaboración del producto.
+  </p>
 
-        </div>
+  <div class="tarjetas">
 
-
-        <div class="dato">
-
-            <h3>DOCENTE RESPONSABLE</h3>
-
-            <p>
-                Nombre del docente
-            </p>
-
-        </div>
-
+    <div class="tarjeta">
+      <h3>💻 Blog digital</h3>
+      <p>
+        Este blog será la principal forma de presentación. Aquí se
+        organizará la investigación, los materiales, las evidencias,
+        el producto final y las conclusiones.
+      </p>
     </div>
 
-</section>
+    <div class="tarjeta">
+      <h3>🖼️ Cartel o infografía</h3>
+      <p>
+        Se puede elaborar un material visual con información resumida,
+        imágenes y recomendaciones para prevenir las picaduras de
+        mosquitos.
+      </p>
+    </div>
 
+    <div class="tarjeta">
+      <h3>🗣️ Exposición oral</h3>
+      <p>
+        El proyecto también puede explicarse frente al curso,
+        presentando el problema investigado, el procedimiento realizado
+        y los resultados obtenidos.
+      </p>
+    </div>
 
-
-<section class="contenido seccion-clara" id="investigacion">
-
-    <h2>Investigación</h2>
-
-    <p>
-        En esta sección se presentará la información investigada
-        acerca de los mosquitos, las enfermedades que pueden transmitir
-        y la importancia de utilizar correctamente los repelentes.
-    </p>
-
-</section>
-
-
-
-<section class="contenido" id="materiales">
-
-    <h2>Materiales</h2>
-
-    <p>
-        Aquí se colocarán los materiales utilizados durante el desarrollo
-        del proyecto y la elaboración del producto.
-    </p>
+  </div>
 
 </section>
 
 
+<section id="investigacion">
 
-<section class="contenido seccion-clara" id="evidencias">
+  <h2>🔎 Investigación</h2>
 
-    <h2>Evidencias</h2>
+  <h3>¿Qué son los mosquitos?</h3>
 
-    <p>
-        En esta sección se mostrarán fotografías y evidencias del proceso
-        realizado durante el proyecto.
-    </p>
+  <p>
+    Los mosquitos son pequeños insectos que viven en diferentes partes
+    del mundo. Algunas especies pueden transmitir microorganismos que
+    producen enfermedades cuando pican a una persona.
+  </p>
 
-</section>
+  <h3>¿Por qué debemos prevenir sus picaduras?</h3>
 
+  <p>
+    Evitar las picaduras de mosquitos ayuda a disminuir el riesgo de
+    algunas enfermedades transmitidas por estos insectos. También es
+    importante eliminar lugares donde se acumule agua, ya que pueden
+    convertirse en criaderos de mosquitos.
+  </p>
 
+  <h3>¿Qué es un repelente?</h3>
 
-<section class="contenido" id="producto">
+  <p>
+    Un repelente es un producto destinado a disminuir el contacto entre
+    los mosquitos y las personas. Debe utilizarse correctamente y
+    siguiendo siempre las instrucciones de seguridad del producto.
+  </p>
 
-    <h2>Producto</h2>
+  <h3>¿Qué es un biorepelente?</h3>
 
-    <p>
-        Aquí se presentará el producto final elaborado como resultado
-        del proyecto de investigación.
-    </p>
+  <p>
+    En este proyecto se estudia la idea de un biorepelente elaborado a
+    partir de materiales de origen natural. Algunas plantas aromáticas,
+    como la citronela, son investigadas por los compuestos y aromas que
+    producen.
+  </p>
 
-</section>
+  <h3>Importancia del proyecto</h3>
 
-
-
-<section class="contenido seccion-clara" id="opinion">
-
-    <h2>Opinión</h2>
-
-    <p>
-        En esta sección se incluirá una opinión personal acerca de la
-        importancia del proyecto y de lo aprendido durante su realización.
-    </p>
-
-</section>
-
-
-
-<section class="contenido" id="conclusiones">
-
-    <h2>Conclusiones</h2>
-
-    <p>
-        Aquí se escribirán las principales conclusiones obtenidas después
-        de realizar la investigación.
-    </p>
+  <p>
+    Este trabajo permite conocer mejor a los mosquitos, comprender la
+    importancia de prevenir sus picaduras y desarrollar conciencia sobre
+    el cuidado de la salud y del ambiente.
+  </p>
 
 </section>
 
 
+<section id="materiales">
 
-<section class="contenido seccion-clara" id="fuentes">
+  <h2>🧪 Materiales</h2>
 
-    <h2>Fuentes</h2>
+  <p>
+    Para desarrollar y presentar el proyecto se pueden utilizar los
+    siguientes materiales:
+  </p>
 
-    <p>
-        En esta sección se colocarán las páginas web, libros, artículos
-        y demás fuentes utilizadas para realizar la investigación.
-    </p>
+  <ul>
+    <li>Envase pequeño con atomizador.</li>
+    <li>Recipiente limpio para preparar el producto escolar.</li>
+    <li>Materiales naturales seleccionados para el proyecto.</li>
+    <li>Citronela como elemento principal de investigación.</li>
+    <li>Agua, cuando corresponda al procedimiento indicado por el docente.</li>
+    <li>Etiqueta para identificar el producto.</li>
+    <li>Guantes para mantener la higiene durante el trabajo.</li>
+    <li>Cuaderno para registrar observaciones.</li>
+    <li>Celular o cámara para tomar fotografías de las evidencias.</li>
+    <li>Computadora para elaborar y actualizar este blog.</li>
+  </ul>
+
+  <div class="aviso">
+    <strong>Importante:</strong> el producto realizado forma parte de un
+    proyecto escolar. Cualquier preparación o aplicación sobre la piel
+    debe realizarse siguiendo las indicaciones del docente y con
+    supervisión de un adulto.
+  </div>
 
 </section>
 
 
-</main>
+<section id="evidencias">
+
+  <h2>📸 Evidencias</h2>
+
+  <p>
+    En esta sección se colocarán fotografías que demuestren el desarrollo
+    del proyecto.
+  </p>
+
+  <div class="evidencias">
+
+    <div class="evidencia">
+      📷<br>
+      <strong>Evidencia 1</strong><br>
+      Recolección de materiales
+    </div>
+
+    <div class="evidencia">
+      📷<br>
+      <strong>Evidencia 2</strong><br>
+      Desarrollo del proyecto
+    </div>
+
+    <div class="evidencia">
+      📷<br>
+      <strong>Evidencia 3</strong><br>
+      Producto terminado
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="producto">
+
+  <h2>🌿 Producto</h2>
+
+  <p>
+    Como producto del proyecto se propone la presentación de un
+    biorepelente escolar relacionado con el estudio de alternativas de
+    origen natural frente a los mosquitos.
+  </p>
+
+  <p>
+    Además del producto físico, este blog funciona como una bitácora
+    digital en la que se registra la investigación, los materiales,
+    las evidencias y los conocimientos adquiridos durante el proyecto.
+  </p>
+
+</section>
+
+
+<section id="opinion">
+
+  <h2>💭 Opinión personal</h2>
+
+  <p>
+    Considero que este proyecto es importante porque me permitió aprender
+    más sobre los mosquitos y sobre algunas formas de prevenir sus
+    picaduras. También aprendí a investigar, organizar información y
+    utilizar herramientas digitales para presentar un trabajo escolar.
+  </p>
+
+  <p>
+    Me pareció interesante relacionar varias materias en un mismo
+    proyecto y crear una propuesta que pueda ayudar a informar a otras
+    personas.
+  </p>
+
+</section>
+
+
+<section id="conclusiones">
+
+  <h2>✅ Conclusiones</h2>
+
+  <ul>
+    <li>
+      Los mosquitos pueden representar un riesgo para la salud, por lo
+      que es importante prevenir sus picaduras.
+    </li>
+
+    <li>
+      Evitar acumulaciones de agua ayuda a reducir los lugares donde
+      pueden reproducirse los mosquitos.
+    </li>
+
+    <li>
+      Los repelentes deben utilizarse de forma adecuada y respetando sus
+      instrucciones de seguridad.
+    </li>
+
+    <li>
+      La investigación permitió conocer alternativas de origen natural
+      estudiadas para repeler insectos.
+    </li>
+
+    <li>
+      El uso de un blog facilita la organización y presentación de las
+      diferentes etapas de un proyecto escolar.
+    </li>
+  </ul>
+
+</section>
+
+
+<section id="fuentes">
+
+  <h2>📚 Fuentes de investigación</h2>
+
+  <p>Para realizar la investigación se pueden consultar fuentes confiables como:</p>
+
+  <ul>
+    <li>Organización Mundial de la Salud (OMS).</li>
+    <li>Organización Panamericana de la Salud (OPS).</li>
+    <li>Centros para el Control y la Prevención de Enfermedades (CDC).</li>
+    <li>Material educativo proporcionado por los docentes.</li>
+  </ul>
+
+</section>
 
 
 <footer>
-
-    <p>
-        © 2026 - Proyecto escolar | Mathias David Mero Viteri
-    </p>
-
+  <p>© 2026 - Proyecto Interdisciplinario</p>
+  <p><strong>Mathias David Mero Viteri | Primero Alfa</strong></p>
 </footer>
-
 
 </body>
 </html>
